@@ -120,6 +120,7 @@ task deployEar( ){
     copy(){
         from "$buildDir/libs/distributed-systems-demo.ear"
         into "$wildfly_home/standalone/deployments/"
+        delete "$buildDir/libs/distributed-systems-demo.ear"
     }
 
     println("Application deployed!")
@@ -226,7 +227,6 @@ task prepareEar(){
         copy {
             from "$buildDir/libs/distributed-systems-demo.war"
             into "$buildDir/tmp/ear"
-            delete "$buildDir/libs/distributed-systems-demo.war"
         }
 
         // JAR
