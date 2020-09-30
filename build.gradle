@@ -210,13 +210,13 @@ task prepareEar(){
 //        }
         copy {
             from "$projectDir/settings/application.xml"
-            into "$buildDir/tmp/ear/MATA-INF/"
+            into "$buildDir/tmp/ear/META-INF/"
         }
 
         /*
         copy {
             from "$projectDir/settings/jboss-app.xml"
-            into "$buildDir/tmp/ear/MATA-INF/"
+            into "$buildDir/tmp/ear/META-INF/"
         }
         */
 
@@ -226,6 +226,7 @@ task prepareEar(){
         copy {
             from "$buildDir/libs/distributed-systems-demo.war"
             into "$buildDir/tmp/ear"
+            delete "$buildDir/libs/distributed-systems-demo.war"
         }
 
         // JAR
