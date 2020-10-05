@@ -2,6 +2,9 @@ language: java
 dist: focal
 jdk: openjdk11
 
+install:
+  - gradle wrapper
+
 script:
   - ./gradlew assemble
   - ./gradlew check
