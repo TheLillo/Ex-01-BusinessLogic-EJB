@@ -93,7 +93,8 @@ public class EJB3ProductDAO implements ProductDAO {
     @Override
     @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public List<Product> getAllProducts() {
-        return em.createQuery("from Product").getResultList();
+        // https://vladmihalcea.com/the-open-session-in-view-anti-pattern/
+        return em.createQuery("from Product p join fetch p.producer").getResultList();
     }
 
     @Override
