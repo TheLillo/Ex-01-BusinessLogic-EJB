@@ -2,5 +2,5 @@ language: java
 dist: focal
 
 script:
-  - ./gradle assemble
-  - ./gradle check
+  - ./gradlew assemble
+  - ./gradlew check
