@@ -1,0 +1,8 @@
+language: java
+dist: focal
+
+gradle assemble
+./gradlew assemble
+
+gradle check
+./gradlew check
