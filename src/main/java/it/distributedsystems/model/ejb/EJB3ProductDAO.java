@@ -94,6 +94,7 @@ public class EJB3ProductDAO implements ProductDAO {
     @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public List<Product> getAllProducts() {
         // https://vladmihalcea.com/the-open-session-in-view-anti-pattern/
+        // https://vladmihalcea.com/the-best-way-to-handle-the-lazyinitializationexception/
         return em.createQuery("from Product p join fetch p.producer").getResultList();
     }
 
