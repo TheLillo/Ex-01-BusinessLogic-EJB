@@ -1,5 +1,6 @@
 language: java
 dist: focal
+jdk: openjdk11
 
 script:
   - ./gradlew assemble
