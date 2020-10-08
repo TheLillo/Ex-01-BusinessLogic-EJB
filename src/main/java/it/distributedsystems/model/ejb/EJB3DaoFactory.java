@@ -58,4 +58,15 @@ public class EJB3DaoFactory extends DAOFactory {
             return null;
         }
     }
+
+    public Cart getCart() {
+        try{
+            InitialContext context = getInitialContext();
+            Cart cart = (Cart)context.lookup("java:module/CartBean");
+            return cart;
+        }catch (Exception e){
+            logger.error("Error Looking up Cart", e);
+            return null;
+        }
+    }
 }

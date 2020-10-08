@@ -1,12 +1,13 @@
 package it.distributedsystems.model.dao;
 
+import it.distributedsystems.model.ejb.Cart;
 import it.distributedsystems.model.ejb.EJB3DaoFactory;
 
 public abstract class DAOFactory {
 
     // ---------------------------------------------------------------------------
 
-    public static DAOFactory getDAOFactory(String whichFactory) {
+    public static DAOFactory getDAOFactory() {
         try {
             return (DAOFactory) new EJB3DaoFactory(); //Class.forName(whichFactory).newInstance();
         } catch (NullPointerException e) {
@@ -29,4 +30,6 @@ public abstract class DAOFactory {
     public abstract ProductDAO getProductDAO();
 
     public abstract ProducerDAO getProducerDAO();
+
+    public abstract Cart getCart();
 }
