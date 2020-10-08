@@ -17,17 +17,7 @@
         <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
         <validation-mode>CALLBACK</validation-mode>
         <properties>
-            <!-- DB information -->
-            <property name="connection.url" value="jdbc:mariadb://127.0.0.1:3306/test"/>
-            <property name="connection.username" value="root"/>
-            <property name="connection.password" value="sdm"/>
-
-
-            <property name="connection.driver_class" value="org.mariadb.jdbc.Driver"/>
-
-            <property name="dialect" value="org.hibernate.dialect.MariaDB53Dialect"/>
-
-
+            
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
