@@ -13,9 +13,9 @@
         <property name="connection.password">sdm</property>
 
         <!--    <property name="connection.driver_class">com.mysql.jdbc.Driver</property> -->
-        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="connection.driver_class">org.mariadb.jdbc.Driver</property>
         <!--    <property name="dialect">org.hibernate.dialect.MySQL8DialectDialect</property> -->
-        <property name="dialect">org.hibernate.dialect.MySQL57Dialect</property>
+        <property name="dialect">org.hibernate.dialect.MariaDB53Dialect</property>
 
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
@@ -27,11 +27,6 @@
 
         <mapping class="it.distributedsystems.model.ejb.Employee" />
         <mapping class="it.distributedsystems.model.ejb.Department" />
-
-        <mapping class="it.distributedsystems.model.dao.Customer" />
-        <mapping class="it.distributedsystems.model.dao.Producer" />
-        <mapping class="it.distributedsystems.model.dao.Product" />
-        <mapping class="it.distributedsystems.model.dao.Purchase" />
 
     </session-factory>
 </hibernate-configuration>
