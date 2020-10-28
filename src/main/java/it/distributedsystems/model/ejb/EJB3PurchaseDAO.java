@@ -31,21 +31,18 @@ import javax.persistence.PersistenceContext;
 
 //    @Interceptors(OperationLogger.class)
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
-    public int insertPurchase(Purchase purchase) {
+    public int insertPurchase(Purchase purchase, Cart cart) {
 
         //riattacco il customer al contesto di persistenza
         if (purchase.getCustomer()!= null && purchase.getCustomer().getId() > 0)
             purchase.setCustomer(em.merge(purchase.getCustomer()));
 
-        //riattacco i product al contesto di persistenza
-        Set<Product> products = new HashSet<Product>();
-
-        if (purchase.getProducts()!= null ){
-            for (Product product : purchase.getProducts()){
+        // https://vladmihalcea.com/the-best-way-to-map-a-onetomany-association-with-jpa-and-hibernate/
+        if (cart.getProducts()!= null ){
+            for (Product product : cart.getProducts()){
                 if(product != null && product.getId() > 0)
-                    products.add(em.merge(product));
+                    purchase.addProduct(em.merge(product));
             }
-            purchase.setProducts(products);
         }
 
         em.persist(purchase);

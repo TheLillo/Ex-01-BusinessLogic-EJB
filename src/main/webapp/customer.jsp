@@ -123,9 +123,9 @@
         Cart cart = (Cart) session.getAttribute(customer.getName());
         Random rand = new Random();
 
-        Purchase purchase = new Purchase(rand.nextInt(), customer, cart.getProducts());
+        Purchase purchase = new Purchase(rand.nextInt(), customer);
 
-        purchaseDAO.insertPurchase(purchase);
+        purchaseDAO.insertPurchase(purchase, cart);
 
 %>
 

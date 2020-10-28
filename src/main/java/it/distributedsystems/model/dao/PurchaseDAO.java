@@ -1,10 +1,12 @@
 package it.distributedsystems.model.dao;
 
+import it.distributedsystems.model.ejb.Cart;
+
 import java.util.List;
 
 public interface PurchaseDAO {
 
-    public int insertPurchase(Purchase purchase);
+    public int insertPurchase(Purchase purchase, Cart cart);
 
     //public int removePurchaseByNumber(int purchaseNumber);
 

@@ -2,6 +2,7 @@ package it.distributedsystems.model.dao;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -21,6 +22,7 @@ public class Purchase implements Serializable {
     public Purchase(int purchaseNumber, Customer customer) {
         this.purchaseNumber = purchaseNumber;
         this.customer = customer;
+        this.products = new HashSet<>();
     }
 
     public Purchase(int purchaseNumber, Customer customer, Set<Product> products) {
@@ -61,5 +63,14 @@ public class Purchase implements Serializable {
     )
     public Set<Product> getProducts() { return products; }
 
-    public void setProducts(Set<Product> products) { this.products = products; }
+    public void addProduct(Product product){
+        this.products.add(product);
+        product.setPurchase(this);
+    }
+
+    public void setProducts(Set<Product> products) {
+        if(!this.products.isEmpty())
+            this.products.clear();
+        this.products = products;
+    }
 }
