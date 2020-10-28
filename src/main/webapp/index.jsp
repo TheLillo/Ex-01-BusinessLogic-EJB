@@ -55,7 +55,7 @@
 	<%
 		// can't use builtin object 'application' while in a declaration!
 		// must be in a scriptlet or expression!
-		DAOFactory daoFactory = DAOFactory.getDAOFactory( application.getInitParameter("dao") );
+		DAOFactory daoFactory = DAOFactory.getDAOFactory();
 		CustomerDAO customerDAO = daoFactory.getCustomerDAO();
 		PurchaseDAO purchaseDAO = daoFactory.getPurchaseDAO();
 		ProductDAO productDAO = daoFactory.getProductDAO();
