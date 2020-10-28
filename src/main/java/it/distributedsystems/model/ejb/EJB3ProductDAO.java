@@ -100,6 +100,14 @@ public class EJB3ProductDAO implements ProductDAO {
 
     @Override
     @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+    public List<Product> getAllProductsAvaiable() {
+        // https://vladmihalcea.com/the-open-session-in-view-anti-pattern/
+        // https://vladmihalcea.com/the-best-way-to-handle-the-lazyinitializationexception/
+        return em.createQuery("from Product p join fetch p.producer where p.purchase is null").getResultList();
+    }
+
+    @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public List<Product> getAllProductsByProducer(Producer producer) {
         //Non è stato necessario usare una fetch join (nonostante Product.producer fosse mappato LAZY)
         //perché gli id delle entità LAZY collegate vengono comunque mantenuti e sono accessibili

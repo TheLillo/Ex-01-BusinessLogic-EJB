@@ -174,7 +174,7 @@
                 <p>Products currently in the database:</p>
                 <table>
                     <tr><th>Name</th><th>ProductNumber</th><th>Publisher</th><th></th></tr>
-                    <%= printTableRows( productDAO.getAllProducts(), request.getContextPath() ) %>
+                    <%= printTableRows( productDAO.getAllProductsAvaiable(), request.getContextPath() ) %>
                 </table>
             </div>
             <br><br><br>

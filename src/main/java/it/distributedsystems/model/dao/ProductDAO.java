@@ -16,6 +16,8 @@ public interface ProductDAO {
 
     public List<Product> getAllProducts();
 
+    public List<Product> getAllProductsAvaiable();
+
     public List<Product> getAllProductsByProducer(Producer producer);
 
     public List<Product> getAllProductsByPurchase(Purchase purchase);
