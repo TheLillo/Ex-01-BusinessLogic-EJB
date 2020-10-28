@@ -34,6 +34,43 @@
 		}
 		return html.toString();
 	}
+
+	String printTablesPurchaseRow(Purchase purchase){
+
+		StringBuffer html = new StringBuffer();
+		html
+				.append("<tr>")
+				.append("<td>")
+				.append(purchase.getCustomer().getName())
+				.append("</td>")
+
+				.append("<td>")
+				.append(purchase.getPurchaseNumber())
+				.append("</td>")
+
+				.append("<td>");
+
+		for(Product p : purchase.getProducts()){
+			html.append(p.getName()).append(" - ");
+		}
+				html.append("</td>");
+
+		html
+				.append("</tr>");
+
+		return html.toString();
+
+	}
+
+	String printTablePurchase(List purchases, String url){
+		StringBuffer html = new StringBuffer();
+		Iterator iterator = purchases.iterator();
+		while ( iterator.hasNext() ) {
+			html.append( printTablesPurchaseRow( (Purchase) iterator.next() ) );
+		}
+		return html.toString();
+	}
+
 %>
 
 <html>
@@ -161,6 +198,14 @@
 		<table>
 			<tr><th>Name</th><th>ProductNumber</th><th>Publisher</th><th></th></tr>
 			<%= printTableRows( productDAO.getAllProducts(), request.getContextPath() ) %>
+		</table>
+	</div>
+
+	<div>
+		<p>Purchase currently in the database:</p>
+		<table>
+			<tr><th>CustomerName</th><th>PurchaseNumber</th><th>Products</th><th></th></tr>
+			<%= printTablePurchase( purchaseDAO.getAllPurchases(), request.getContextPath() ) %>
 		</table>
 	</div>
 
