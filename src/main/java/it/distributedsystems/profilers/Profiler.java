@@ -16,7 +16,7 @@ public class Profiler {
 
         try{
             ic = new InitialContext();
-            cf = (ConnectionFactory) ic.lookup("/ConnectionFactory");
+            cf = (ConnectionFactory) ic.lookup("java:/ConnectionFactory");
         }catch (NamingException e){
             e.printStackTrace();
         }
@@ -26,7 +26,7 @@ public class Profiler {
                 Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
                 )
         {
-            Queue queue = (Queue) ic.lookup("queue/LoggingQueue");
+            Queue queue = (Queue) ic.lookup("java:/queue/LoggingQueue");
             MessageProducer publisher = session.createProducer(queue);
             connection.start();
             TextMessage message = session.createTextMessage(ctx.getMethod().getName());
