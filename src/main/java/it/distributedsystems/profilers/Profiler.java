@@ -5,8 +5,6 @@ import javax.jms.*;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 
 public class Profiler {
 
