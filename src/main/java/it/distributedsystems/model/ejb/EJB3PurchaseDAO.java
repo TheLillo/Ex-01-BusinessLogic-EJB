@@ -5,6 +5,7 @@ import it.distributedsystems.model.dao.Customer;
 import it.distributedsystems.model.dao.Product;
 import it.distributedsystems.model.dao.Purchase;
 import it.distributedsystems.model.dao.PurchaseDAO;
+import it.distributedsystems.profilers.Profiler;
 
 import java.util.HashSet;
 import java.util.List;
@@ -31,6 +32,7 @@ import javax.persistence.PersistenceContext;
 
 //    @Interceptors(OperationLogger.class)
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
+    @Interceptors(Profiler.class)
     public int insertPurchase(Purchase purchase, Cart cart) {
 
         //riattacco il customer al contesto di persistenza

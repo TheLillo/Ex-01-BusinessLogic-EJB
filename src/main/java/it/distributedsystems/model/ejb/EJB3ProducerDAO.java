@@ -5,6 +5,7 @@ import it.distributedsystems.model.dao.Customer;
 import it.distributedsystems.model.dao.CustomerDAO;
 import it.distributedsystems.model.dao.Producer;
 import it.distributedsystems.model.dao.ProducerDAO;
+import it.distributedsystems.profilers.Profiler;
 
 import javax.ejb.*;
 import javax.interceptor.Interceptors;
@@ -23,6 +24,7 @@ public class EJB3ProducerDAO implements ProducerDAO {
     @Override
 //    @Interceptors(OperationLogger.class)
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
+    @Interceptors(Profiler.class)
     public int insertProducer(Producer producer) {
         em.persist(producer);
         return producer.getId();
